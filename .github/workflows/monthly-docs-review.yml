@@ -1,0 +1,34 @@
+name: Monthly docs review
+
+# Opens one issue a month. Lists docs whose last_verified is older than
+# 90 days (an assumption, see open-questions.md) and reminds the team of
+# rule 2: a question answered twice gets written down.
+
+on:
+  schedule:
+    - cron: "0 8 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Open the review issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "Monthly review of the Fernway brain. Owner of this issue: Hana Kim."
+            echo
+            python3 scripts/check_docs.py --stale 90
+            echo
+            echo "For each doc above, the owner re-checks it against its source, fixes or confirms it, and bumps \`last_verified\` in a pull request."
+            echo
+            echo "Also: any question answered twice this month (Slack, Intercom, calls)? Add it to the brain or to \`open-questions.md\` (team rule 2)."
+          } > body.md
+          gh issue create --title "Docs review $(date -u +%Y-%m)" --body-file body.md

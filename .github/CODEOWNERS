@@ -1,0 +1,31 @@
+# Fernway people have no GitHub accounts yet. Every line maps to the repo
+# creator (@maranferij-lang) as a stand-in. The comment above each line names
+# the real Fernway owner. Replace the handle when they get accounts.
+# The last matching line wins, so the default comes first.
+
+# Hana Kim: repo owner (default for everything)
+*                                       @maranferij-lang
+
+# Ivan Petrenko: technical review (agents, scripts, CI, releases)
+/agents/                                @maranferij-lang
+/scripts/                               @maranferij-lang
+/.github/                               @maranferij-lang
+/processes/releases.md                  @maranferij-lang
+/runbooks/release.md                    @maranferij-lang
+
+# Lukas Weber: customer onboarding
+/processes/onboarding.md                @maranferij-lang
+/runbooks/new-customer-onboarding.md    @maranferij-lang
+
+# Priya Raman: inbound leads
+/processes/inbound-leads.md             @maranferij-lang
+
+# Jonas Berg: support escalation
+/processes/support-escalation.md        @maranferij-lang
+
+# Hana Kim: billing
+/processes/billing.md                   @maranferij-lang
+
+# Mara Voss: pricing and hiring
+/company/pricing.md                     @maranferij-lang
+/processes/hiring.md                    @maranferij-lang
