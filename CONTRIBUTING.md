@@ -22,6 +22,8 @@ The same rules apply to people and to AI agents (Claude Code, `@claude` on GitHu
 5. **`python3 scripts/check_docs.py` must pass.** CI runs it on every pull request.
 6. **The doc owner (or the reviewer below) approves the change.** Technical docs (releases, agents, scripts, workflows) are reviewed by Ivan Petrenko.
 
+   **Temporary bypass:** the repo admin can bypass the 1-approval rule when merging a pull request, so the only maintainer can merge their own PRs; this stays until a second reviewer exists, then it is switched off.
+
 ## Who owns what
 
 | Area | Owner |
