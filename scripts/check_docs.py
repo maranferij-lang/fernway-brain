@@ -42,7 +42,7 @@ SENSITIVE_PATTERNS = [
     ("JWT", re.compile(r"\beyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}")),
     ("long random string", re.compile(r"(?<![A-Za-z0-9/_.-])[A-Za-z0-9+/_-]{40,}={0,2}(?![A-Za-z0-9/_.-])")),
     ("password-style assignment", re.compile(
-        r"(?i)\b(?:password|passwd|pwd|passcode|secret|token|api[_-]?key|login|credentials?)\b\s*[:=]\s*"
+        r"(?i)(?<!id-)\b(?:password|passwd|pwd|passcode|secret|token|api[_-]?key|login|credentials?)\b\s*[:=]\s*"
         r"(?!\$\{\{)['\"]?[^\s'\"]{4,}")),
 ]
 
@@ -102,6 +102,13 @@ def scan(path):
             if label == "phone number":
                 for m in pattern.finditer(line):
                     if len(re.sub(r"\D", "", m.group())) >= 9:
+                        hits.append((n, label))
+                        break
+            elif label == "long random string":
+                # Real keys mix letters and digits; identifiers like
+                # mcp__github_inline_comment__create_inline_comment do not.
+                for m in pattern.finditer(line):
+                    if re.search(r"[A-Za-z]", m.group()) and re.search(r"\d", m.group()):
                         hits.append((n, label))
                         break
             elif pattern.search(line):
