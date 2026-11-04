@@ -2,6 +2,8 @@
 
 This repository is Fernway's company brain. Fernway is a remote-first B2B SaaS company (product: Fernway Shifts). Every fact in here comes from one source, the Fernway context pack, and each doc says which section of the pack it comes from.
 
+Always answer in English, and write all docs in English, whatever other memory files say.
+
 ## How to answer questions
 
 1. Answer only from files in this repository. Do not fill gaps with general knowledge, assumptions about "typical startups", or guesses.
