@@ -28,3 +28,5 @@ last_verified: 2026-11-03
 ## What is needed to complete this card
 
 Ivan Petrenko lists each workflow (name, trigger, what it does, which systems, whether it touches customer data). Tracked in `open-questions.md`.
+
+<!-- Test only, do not merge: a fake key to show the check blocks it. sk-TESTONLYnotarealkey0000 -->
